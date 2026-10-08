@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { useId, useState } from "react";
+import { Thumbnail } from "@/components/Thumbnail";
 import type { Accent, ContentGroup, ContentItem, WorkTab } from "@/lib/content";
 
 const INITIAL_COUNT = 6;
@@ -101,8 +102,15 @@ export function WorkTabs({ tabs }: { tabs: WorkTab[] }) {
                 href={entry.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-xl border border-sand bg-paper p-4 transition hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-sm"
+                className="group flex h-full flex-col overflow-hidden rounded-xl border border-sand bg-paper transition hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-sm"
               >
+                <Thumbnail
+                  src={entry.image}
+                  label={entry.source}
+                  accent={active.accent}
+                  className="aspect-[1.91/1] border-b border-sand"
+                />
+                <span className="flex flex-1 flex-col p-4">
                 <span className="flex items-center justify-between gap-3">
                   <span className={`truncate rounded-full px-2 py-0.5 text-xs font-medium ${chip[active.accent]}`}>
                     {entry.source}
@@ -119,6 +127,7 @@ export function WorkTabs({ tabs }: { tabs: WorkTab[] }) {
                 {entry.description ? (
                   <span className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-ink-soft">{entry.description}</span>
                 ) : null}
+                </span>
               </a>
             </li>
           ))}

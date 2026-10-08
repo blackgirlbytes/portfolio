@@ -3,6 +3,7 @@ export type Accent = "terra" | "marigold" | "moss" | "plum";
 export type ContentItem = {
   title: string;
   href: string;
+  image?: string;
   meta?: string;
   year?: string;
   description?: string;
@@ -95,6 +96,7 @@ export type Highlight = {
   accent: Accent;
   title: string;
   href: string;
+  image?: string;
   blurb: string;
 };
 
@@ -151,27 +153,27 @@ export const writing: ContentGroup[] = [
     items: [
       {
         title: "5 Tips for Building MCP Apps That Work",
-        href: "https://block.github.io/goose/blog/2026/01/30/5-tips-building-mcp-apps",
+        href: "https://goose-docs.ai/blog/2026/01/30/5-tips-building-mcp-apps/",
         year: "2026",
       },
       {
         title: "Gas Town Explained: How to Use Goosetown for Parallel Agentic Engineering",
-        href: "https://block.github.io/goose/blog/2026/02/19/gastown-explained-goosetown",
+        href: "https://goose-docs.ai/blog/2026/02/19/gastown-explained-goosetown/",
         year: "2026",
       },
       {
         title: "How I Used RPI to Build an OpenClaw Alternative",
-        href: "https://block.github.io/goose/blog/2026/02/06/rpi-openclaw-alternative",
+        href: "https://goose-docs.ai/blog/2026/02/06/rpi-openclaw-alternative/",
         year: "2026",
       },
       {
         title: "How We Use goose to Maintain goose",
-        href: "https://block.github.io/goose/blog/2025/12/28/goose-maintains-goose",
+        href: "https://goose-docs.ai/blog/2025/12/28/goose-maintains-goose/",
         year: "2025",
       },
       {
         title: "8 Things You Didn't Know About Code Mode",
-        href: "https://block.github.io/goose/blog/2026/02/06/8-things-you-didnt-know-about-code-mode",
+        href: "https://goose-docs.ai/blog/2026/02/06/8-things-you-didnt-know-about-code-mode/",
         year: "2026",
       },
     ],
@@ -205,7 +207,7 @@ export const writing: ContentGroup[] = [
       },
       {
         title: "How to send a tweet with Copilot",
-        href: "https://dev.to/github/how-to-send-a-tweet-with-copilot-4ih7",
+        href: "https://dev.to/github/how-to-send-a-tweet-with-github-copilot-4ih7",
       },
       {
         title: "How do I resolve merge conflicts?",

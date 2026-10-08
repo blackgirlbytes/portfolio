@@ -6,9 +6,12 @@ import { Highlights } from "@/components/Highlights";
 import { Section } from "@/components/Section";
 import { Skills } from "@/components/Skills";
 import { WorkTabs } from "@/components/WorkTabs";
-import { workTabs } from "@/lib/content";
+import { highlights, workTabs } from "@/lib/content";
+import { highlightsWithThumbnails, withThumbnails } from "@/lib/thumbnails";
 
-export default function Home() {
+export default async function Home() {
+  const [tabs, featured] = await Promise.all([withThumbnails(workTabs), highlightsWithThumbnails(highlights)]);
+
   return (
     <>
       <a
@@ -28,7 +31,7 @@ export default function Home() {
         </Section>
 
         <Section id="highlights" index="02" eyebrow="Featured work" title="Career highlights" accent="marigold">
-          <Highlights />
+          <Highlights items={featured} />
         </Section>
 
         <Section
@@ -39,7 +42,7 @@ export default function Home() {
           intro="Pick a category. Every card links to the published piece."
           accent="plum"
         >
-          <WorkTabs tabs={workTabs} />
+          <WorkTabs tabs={tabs} />
         </Section>
 
         <Section id="community" index="04" eyebrow="Community" title="Communities I build" accent="moss">
