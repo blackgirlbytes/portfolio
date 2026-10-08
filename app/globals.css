@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* Warm cream canvas with terracotta, marigold, moss, and plum accents. */
+:root {
+  --bg: #faf6ee;
+  --paper: #fffdf9;
+  --sand: #e7dcc9;
+  --ink: #2b211a;
+  --ink-soft: #5c4f44;
+  --ink-faint: #8a7a6c;
+  --terra: #bf4d28;
+  --terra-deep: #9d3c1b;
+  --terra-soft: #f6e1d5;
+  --marigold: #a8720a;
+  --marigold-deep: #8a5d05;
+  --marigold-soft: #f6ead0;
+  --moss: #3f6b50;
+  --moss-soft: #e4ede0;
+  --plum: #74447f;
+  --plum-soft: #efe4f1;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-cream: var(--bg);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-terra: var(--terra);
+  --color-terra-deep: var(--terra-deep);
+  --color-terra-soft: var(--terra-soft);
+  --color-marigold: var(--marigold);
+  --color-marigold-deep: var(--marigold-deep);
+  --color-marigold-soft: var(--marigold-soft);
+  --color-moss: var(--moss);
+  --color-moss-soft: var(--moss-soft);
+  --color-plum: var(--plum);
+  --color-plum-soft: var(--plum-soft);
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+::selection {
+  background-color: #f2d5c4;
+}
+
+:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 2px;
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff;
+  }
+}
