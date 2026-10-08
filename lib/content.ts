@@ -29,7 +29,7 @@ export const navLinks = [
 ];
 
 export const heroStats = [
-  "15 published articles",
+  "45+ published articles",
   "GitHub Universe keynote speaker",
   "O'Reilly course instructor",
   "153+ BlackRel community members",
@@ -37,12 +37,14 @@ export const heroStats = [
 ];
 
 const GOOSE_BLOG = "Block · goose blog";
+const NEWSLETTER = "The Agent Whisperer";
 
 // Display order is intentional, so posts are not grouped by publication.
 const writingInOrder: (ContentItem & { source: string })[] = [
-  { source: "LinkedIn", title: "Welcome to Glass Town", href: "https://lnkd.in/p/g84cj5RW" },
+  { source: NEWSLETTER, title: "Welcome to Glass Town", href: "https://lnkd.in/p/g84cj5RW", year: "2026" },
   {
-    source: "LinkedIn",
+    source: NEWSLETTER,
+    year: "2026",
     title: "Jev Might Save Your Relationship",
     href: "https://www.linkedin.com/pulse/jev-might-save-your-relationship-rizel-scarlett-cbx2c",
   },
@@ -122,7 +124,58 @@ const writingInOrder: (ContentItem & { source: string })[] = [
   },
 ];
 
-export const writing: ContentGroup[] = writingInOrder.map(({ source, ...item }) => ({ label: source, items: [item] }));
+// Further posts, newest first, after the curated list above.
+const moreNewsletterPosts: [title: string, slug: string][] = [
+  ["Beyond LLMs: How World Models Are Changing Generative Media", "beyond-llms-how-world-models-changing-generative-media-rizel-scarlett-nmygc"],
+  ["How to Improve Playwright Test Coverage Using Agent Context", "how-improve-playwright-test-coverage-using-agent-context-scarlett-q4tyc"],
+  ["How I Put My Agent in CI to Automate Release Notes", "how-i-put-my-agent-ci-automate-release-notes-rizel-scarlett-pgrwc"],
+  ["Why Is Everyone Trying to Rebuild Git Hosting?", "why-everyone-trying-rebuild-github-rizel-scarlett-wx0ic"],
+  ["Human Attention Is a Scarce Resource", "human-attention-scarce-resource-rizel-scarlett-wjhqc"],
+];
+
+const moreGoosePosts: [title: string, path: string][] = [
+  ["WebMCP for Beginners", "2026/03/17/webmcp-for-beginners"],
+  ["How I Taught My Agent My Design Taste", "2026/01/04/how-i-taught-my-agent-my-design-taste"],
+  ["Code Mode Doesn't Replace MCP (Here's What It Actually Does)", "2025/12/21/code-mode-doesnt-replace-mcp"],
+  ["Does Your AI Agent Need a Plan?", "2025/12/19/does-your-ai-agent-need-a-plan"],
+  ["How to Stop Your AI Agent From Making Unwanted Code Changes", "2025/12/10/stop-ai-agent-unwanted-changes"],
+  ["Announcing Advent of AI", "2025/11/30/announcing-advent-of-ai"],
+  ["How to Successfully Migrate Your App with an AI Agent", "2025/11/17/migrate-app-with-ai-agent"],
+  [
+    "Intro to Agent Client Protocol (ACP): The Standard for AI Agent-Editor Integration",
+    "2025/10/24/intro-to-agent-client-protocol-acp",
+  ],
+  ["Your First goose Experience Is On Us", "2025/08/27/get-started-for-free-with-tetrate"],
+  ["The AI Skeptic's Guide to Context Windows", "2025/08/18/understanding-context-windows"],
+  ["How PulseMCP Automated Their Newsletter Workflow with goose", "2025/08/13/pulse-mcp-automates-recipe"],
+  ["How OpenRouter Unlocked Our Workshop Strategy", "2025/07/29/openrouter-unlocks-workshops"],
+  ["Orchestrating 6 Subagents to Build a Collaborative API Playground for Kids", "2025/07/21/orchestrating-subagents"],
+  ["Why I Used goose to Build a Chaotic Emotion Detection App", "2025/06/17/goose-emotion-detection-app"],
+  ["How I Manage Localhost Port Conflicts With an AI Agent", "2025/05/22/manage-local-host-conflicts-with-goose"],
+  ["A Recipe for Success: Cooking Up Repeatable Agentic Workflows", "2025/05/06/recipe-for-success"],
+  ["11 Practical Ways I Use AI Agents Without Losing My Authenticity", "2025/04/21/practical-use-cases-of-ai"],
+  ["How to Vibe Code Responsibly (with goose)", "2025/04/08/vibe-code-responsibly"],
+  ["Codename goose Goes to Boston", "2025/03/21/goose-boston-meetup"],
+  ["Screenshot-Driven Development", "2024/11/22/screenshot-driven-development"],
+];
+
+const allWriting: (ContentItem & { source: string })[] = [
+  ...writingInOrder,
+  ...moreNewsletterPosts.map(([title, slug]) => ({
+    source: NEWSLETTER,
+    title,
+    href: `https://www.linkedin.com/pulse/${slug}`,
+    year: "2026",
+  })),
+  ...moreGoosePosts.map(([title, path]) => ({
+    source: GOOSE_BLOG,
+    title,
+    href: `https://goose-docs.ai/blog/${path}/`,
+    year: path.slice(0, 4),
+  })),
+];
+
+export const writing: ContentGroup[] = allWriting.map(({ source, ...item }) => ({ label: source, items: [item] }));
 
 export const speaking: ContentGroup[] = [
   {
@@ -330,8 +383,8 @@ export const streams: ContentGroup[] = [
 export const thoughtLeadership: ContentItem[] = [
   {
     title: "How to Lead DevRel in the AI Boom: Stop Playing It Safe",
-    href: "https://www.linkedin.com/pulse/jev-might-save-your-relationship-rizel-scarlett-cbx2c",
-    meta: "LinkedIn",
+    href: "https://www.linkedin.com/pulse/how-lead-devrel-ai-boom-stop-playing-safe-rizel-scarlett-lnppc",
+    meta: "The Agent Whisperer",
   },
   {
     title: "Developer Relations Is an All-Company Effort",
