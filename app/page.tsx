@@ -1,4 +1,3 @@
-import { Community } from "@/components/Community";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -33,10 +32,6 @@ export default async function Home() {
           accent="plum"
         >
           <WorkTabs tabs={tabs} />
-        </Section>
-
-        <Section id="community" index="02" eyebrow="Community" title="Communities I build" accent="moss">
-          <Community />
         </Section>
       </main>
 

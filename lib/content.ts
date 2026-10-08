@@ -26,7 +26,6 @@ export const contact = {
 
 export const navLinks = [
   { href: "#work", label: "Work" },
-  { href: "#community", label: "Community" },
 ];
 
 export const heroStats = [
@@ -358,34 +357,6 @@ export const thoughtLeadership: ContentItem[] = [
     title: "How to Speak at Conferences When You're Scared of Public Speaking",
     href: "https://dev.to/blackgirlbytes/how-to-speak-at-a-conference-when-youre-scared-of-public-speaking-562f",
     meta: "dev.to",
-  },
-];
-
-export type CommunityItem = {
-  name: string;
-  role: string;
-  href?: string;
-  blurb: string;
-};
-
-export const community: CommunityItem[] = [
-  {
-    name: "BlackRel",
-    role: "Founder",
-    href: "https://www.blackrel.dev/",
-    blurb:
-      "Created BlackRel — a community of over 153 Black Developer Relations professionals, creating space, mentorship, and visibility in the field.",
-  },
-  {
-    name: "goose DevRel community",
-    role: "Maintainer",
-    blurb:
-      "Maintains the goose DevRel community on Discord, helping developers adopt Block's open source AI agent.",
-  },
-  {
-    name: "Entire Discord & Insiders Program",
-    role: "Maintainer",
-    blurb: "Maintains and nurtures Entire's Discord community and their Insiders Program.",
   },
 ];
 
