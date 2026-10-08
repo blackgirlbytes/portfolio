@@ -1,100 +1,37 @@
-import { Globe, Mail, Phone } from "lucide-react";
-import { GithubIcon } from "@/components/icons";
-import { contact, heroStats } from "@/lib/content";
+import { contact } from "@/lib/content";
 
+const links = [
+  { href: `mailto:${contact.email}`, label: "Email" },
+  { href: contact.githubHref, label: "GitHub", external: true },
+  { href: contact.siteHref, label: "Blog", external: true },
+];
+
+const intro = "Developer relations for AI dev tools. GitHub, Block, and now Entire.";
+
+// A menu bar along the top of the "screen" holds the intro, so the work window starts right below it.
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[26rem] w-[26rem] rounded-full bg-terra-soft/80 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-48 top-40 h-80 w-80 rounded-full bg-marigold-soft/70 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-24 right-1/4 h-72 w-72 rounded-full bg-plum-soft/50 blur-3xl"
-      />
-
-      <div className="relative mx-auto max-w-5xl px-5 pb-10 pt-12 sm:px-8 sm:pb-12 sm:pt-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-terra">
-          Developer Relations &middot; AI &amp; Open Source
+    <header className="z-50 border-b border-line bg-window/70 backdrop-blur-md sm:sticky sm:top-0">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-2 sm:h-10 sm:flex-nowrap sm:py-0">
+        <p className="flex min-w-0 items-baseline gap-3">
+          <span className="whitespace-nowrap text-[15px] font-bold">Rizel Scarlett</span>
+          <span className="hidden truncate text-[13px] text-ink-soft md:inline">{intro}</span>
         </p>
-        <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-ink sm:text-7xl">Rizel Scarlett</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
-          I help developers fall in love with new tools. I write beginner-friendly guides, take the stage at
-          conferences, ship open source, and build communities &mdash; with a current focus on MCPs, agentic coding,
-          and AI-powered tools like goose.
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href={`mailto:${contact.email}`}
-            className="rounded-full bg-terra px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-terra-deep"
-          >
-            Email me
-          </a>
-          <a
-            href="#work"
-            className="rounded-full border border-ink/10 bg-paper px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-terra/40 hover:text-terra-deep"
-          >
-            Explore my work
-          </a>
-        </div>
-
-        <ul className="mt-8 flex flex-wrap gap-2.5">
-          {heroStats.map((stat) => (
-            <li key={stat} className="rounded-full border border-sand bg-paper px-3.5 py-1.5 text-sm text-ink-soft">
-              {stat}
+        <ul className="flex gap-1 text-[13px]">
+          {links.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="block rounded px-2 py-1 hover:bg-[#8fb8ff] hover:text-white"
+              >
+                {link.label}
+              </a>
             </li>
           ))}
         </ul>
-
-        <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-ink-soft">
-          <li>
-            <a
-              href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 font-medium transition hover:text-terra-deep"
-            >
-              <Mail className="h-4 w-4 text-ink-faint" aria-hidden />
-              {contact.email}
-            </a>
-          </li>
-          <li>
-            <a
-              href={contact.phoneHref}
-              className="inline-flex items-center gap-2 font-medium transition hover:text-terra-deep"
-            >
-              <Phone className="h-4 w-4 text-ink-faint" aria-hidden />
-              {contact.phoneDisplay}
-            </a>
-          </li>
-          <li>
-            <a
-              href={contact.siteHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium transition hover:text-terra-deep"
-            >
-              <Globe className="h-4 w-4 text-ink-faint" aria-hidden />
-              {contact.siteLabel}
-            </a>
-          </li>
-          <li>
-            <a
-              href={contact.githubHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium transition hover:text-terra-deep"
-            >
-              <GithubIcon className="h-4 w-4 text-ink-faint" />
-              {contact.githubLabel}
-            </a>
-          </li>
-        </ul>
+        <p className="w-full text-[13px] text-ink-soft md:hidden">{intro}</p>
       </div>
-    </section>
+    </header>
   );
 }

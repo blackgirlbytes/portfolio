@@ -1,69 +1,123 @@
 @import "tailwindcss";
 
-/* Warm cream canvas with terracotta, marigold, moss, and plum accents. */
+/* Early-2000s Mac in pastel: candy desktop, pinstriped windows, glossy jelly buttons. */
 :root {
-  --bg: #faf6ee;
-  --paper: #fffdf9;
-  --sand: #e7dcc9;
-  --ink: #2b211a;
-  --ink-soft: #5c4f44;
-  --ink-faint: #8a7a6c;
-  --terra: #bf4d28;
-  --terra-deep: #9d3c1b;
-  --terra-soft: #f6e1d5;
-  --marigold: #a8720a;
-  --marigold-deep: #8a5d05;
-  --marigold-soft: #f6ead0;
-  --moss: #3f6b50;
-  --moss-soft: #e4ede0;
-  --plum: #74447f;
-  --plum-soft: #efe4f1;
+  --desk-a: #ffe6f2;
+  --desk-b: #efe7ff;
+  --desk-c: #e3f1ff;
+  --window: #ffffff;
+  --stripe: #fbf8fd;
+  --chrome-top: #ffffff;
+  --chrome-bottom: #f6f1fa;
+  --ink: #4a3b5e;
+  --ink-soft: #8c7da0;
+  --line: rgba(140, 110, 170, 0.18);
+  --gel-top: #ffffff;
+  --gel-bottom: #f3eff8;
+  --gloss: 1;
   color-scheme: light;
 }
 
+
 @theme inline {
-  --color-cream: var(--bg);
-  --color-paper: var(--paper);
-  --color-sand: var(--sand);
+  --color-window: var(--window);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-ink-faint: var(--ink-faint);
-  --color-terra: var(--terra);
-  --color-terra-deep: var(--terra-deep);
-  --color-terra-soft: var(--terra-soft);
-  --color-marigold: var(--marigold);
-  --color-marigold-deep: var(--marigold-deep);
-  --color-marigold-soft: var(--marigold-soft);
-  --color-moss: var(--moss);
-  --color-moss-soft: var(--moss-soft);
-  --color-plum: var(--plum);
-  --color-plum-soft: var(--plum-soft);
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --color-line: var(--line);
+  --font-sans: "Lucida Grande", "Lucida Sans Unicode", var(--font-nunito-sans), system-ui, sans-serif;
 }
 
 html {
-  background: var(--bg);
+  background: var(--desk-b);
 }
 
 body {
-  background: var(--bg);
+  min-height: 100vh;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  background: linear-gradient(160deg, var(--desk-a) 0%, var(--desk-b) 50%, var(--desk-c) 100%) fixed;
+}
+
+.pinstripes {
+  background-color: var(--window);
+  background-image: repeating-linear-gradient(to bottom, var(--window) 0 2px, var(--stripe) 2px 4px);
+}
+
+.chrome {
+  background: linear-gradient(to bottom, var(--chrome-top), var(--chrome-bottom));
+}
+
+/* Jelly button. Colored when --flavor is set, frosted white otherwise. */
+.gel {
+  --fill-top: var(--gel-top);
+  --fill-bottom: var(--gel-bottom);
+  --edge: var(--line);
+  border: 1px solid var(--edge);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, calc(0.85 * var(--gloss))) 0%,
+      rgba(255, 255, 255, calc(0.35 * var(--gloss))) 48%,
+      rgba(255, 255, 255, 0) 52%
+    ),
+    linear-gradient(to bottom, var(--fill-top), var(--fill-bottom));
+  box-shadow:
+    inset 0 -3px 6px rgba(255, 255, 255, calc(0.55 * var(--gloss))),
+    0 1px 2px rgba(140, 110, 170, 0.18);
+}
+
+.gel-flavor {
+  --fill-top: var(--flavor);
+  --fill-bottom: color-mix(in srgb, var(--flavor) 88%, var(--flavor-deep));
+  --edge: color-mix(in srgb, var(--flavor-deep) 70%, transparent);
+  --gloss: 1;
+  color: var(--ink);
+}
+
+/* Placeholder behind a missing thumbnail, tinted with the category color. */
+.tint {
+  background-color: var(--flavor-soft);
+}
+
+/* A candy-colored dot, used for the window buttons. */
+.candy {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.9) 0 25%, rgba(255, 255, 255, 0) 55%),
+    var(--candy);
+  border: 1px solid color-mix(in srgb, var(--candy) 60%, #3b2c4f);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+  .window-open {
+    animation: window-open 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .throb {
+    animation: throb 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes window-open {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+}
+
+/* The default button in an old Mac dialog slowly pulsed. */
+@keyframes throb {
+  50% {
+    filter: brightness(1.08) saturate(1.25);
   }
 }
 
 ::selection {
-  background-color: #f2d5c4;
+  background-color: #ffc4df;
+  color: var(--ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--terra);
+  outline: 3px solid #8fb8ff;
   outline-offset: 2px;
 }
 

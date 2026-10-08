@@ -1,5 +1,3 @@
-export type Accent = "terra" | "marigold" | "moss" | "plum";
-
 export type ContentItem = {
   title: string;
   href: string;
@@ -23,18 +21,6 @@ export const contact = {
   githubLabel: "github.com/blackgirlbytes",
   githubHref: "https://github.com/blackgirlbytes",
 };
-
-export const navLinks = [
-  { href: "#work", label: "Work" },
-];
-
-export const heroStats = [
-  "45+ published articles",
-  "GitHub Universe keynote speaker",
-  "O'Reilly course instructor",
-  "153+ BlackRel community members",
-  "40 talks, podcasts & streams",
-];
 
 const GOOSE_BLOG = "Block · goose blog";
 const NEWSLETTER = "The Agent Whisperer";
@@ -187,6 +173,12 @@ export const speaking: ContentGroup[] = [
         meta: "Conference talk",
       },
       {
+        title: "Escaping the Curse of Outdated Docs",
+        href: "https://www.youtube.com/watch?v=moWFvZyd1rw",
+        meta: "SquiggleConf",
+        year: "2025",
+      },
+      {
         title: "Rizel's Segment of the GitHub Universe Keynote 2022",
         href: "https://youtu.be/rJdlmpJ51ik",
         meta: "GitHub Universe keynote",
@@ -207,6 +199,90 @@ export const speaking: ContentGroup[] = [
         href: "https://www.youtube.com/watch?v=JpBdvIVlSNM",
         meta: "Conference talk",
       },
+      {
+        title: "The Last Website You'll Ever Visit (in the Browser)",
+        href: "https://www.youtube.com/watch?v=9PFjcoxYFic",
+        meta: "G2i",
+        year: "2026",
+      },
+      {
+        title: "Level Up with Copilot at JSWORLD",
+        href: "https://www.youtube.com/watch?v=RqUu03DN7iI",
+        meta: "JSWORLD Conference",
+        year: "2023",
+      },
+      {
+        title: "The Missing Paper Trail for Agentic Engineering",
+        href: "https://www.youtube.com/watch?v=Rgmt_99VbkA",
+        meta: "AI ❤️ Monorepos Conf",
+        year: "2026",
+      },
+      {
+        title: "The Missing Paper Trail for Agentic Engineering",
+        href: "https://www.youtube.com/watch?v=wwMZvX6Wkzg",
+        meta: "Code Europe",
+        year: "2026",
+      },
+      {
+        title: "MCP-UI: Where Intent Becomes Interface",
+        href: "https://www.youtube.com/watch?v=JXeU9oZtT-Q",
+        meta: "Dallas Software Developers",
+        year: "2025",
+      },
+      {
+        title: "Objects in Mirror Are Closer Than They Appear",
+        href: "https://www.youtube.com/watch?v=pV3OFuDrYww",
+        meta: "Certified Fresh Events",
+        year: "2025",
+      },
+      {
+        title: "Introducing goose to OpenMetadata",
+        href: "https://www.youtube.com/watch?v=VefYcp8IfzQ",
+        meta: "OpenMetadata",
+        year: "2025",
+      },
+      {
+        title: "How JSON Web Tokens Define the Future of Mobile Driver's License",
+        href: "https://www.youtube.com/watch?v=4lfxK00yAjQ",
+        meta: "Conf42 JS",
+        year: "2024",
+      },
+      {
+        title: "Introduction to Open Source 101",
+        href: "https://www.youtube.com/watch?v=ZJppHg3taRk",
+        meta: "All In Open Source course",
+        year: "2023",
+      },
+      {
+        title: "Overcoming the Fear of Contributing to Open Source",
+        href: "https://www.youtube.com/watch?v=8a73pJ1wTiQ",
+        meta: "Upstream by Tidelift",
+        year: "2022",
+      },
+      {
+        title: "GitHub Pages Reimagined: Deploy Your First Website Without Leaving Your IDE",
+        href: "https://www.youtube.com/watch?v=43cneIXFoZ0",
+        meta: "Certified Fresh Events",
+        year: "2022",
+      },
+      {
+        title: "How Can My Team Support a Junior Developer Advocate?",
+        href: "https://www.youtube.com/watch?v=zXg60XNzQ8A",
+        meta: "DevRelX Summit",
+        year: "2022",
+      },
+      {
+        title: "Overcoming the Fear of Contributing to Open Source",
+        href: "https://www.youtube.com/watch?v=o7vLz4DmrQs",
+        meta: "All Things Open",
+        year: "2021",
+      },
+      {
+        title: "Teaching to Empower: How to Support Junior Engineers",
+        href: "https://www.youtube.com/watch?v=oWa9Vfk7aGY",
+        meta: "Women Who Code",
+        year: "2021",
+      },
     ],
   },
   {
@@ -226,6 +302,22 @@ export const speaking: ContentGroup[] = [
         title: "How to Enable Entire in Your Repo",
         href: "https://www.youtube.com/watch?v=oCtREIM95Rk",
         meta: "Video",
+      },
+      {
+        title: "How to Create Your First Checkpoint | Entire 101, Ep. 2",
+        href: "https://www.youtube.com/watch?v=ehWDtXYFZ2Y",
+        meta: "Video",
+      },
+      {
+        title: "Bring Your Repos to Entire | Entire 101, Ep. 4",
+        href: "https://www.youtube.com/watch?v=-l0axVoGh_w",
+        meta: "Video",
+      },
+      {
+        title: "Building Confidence Through Community",
+        href: "https://www.youtube.com/watch?v=DfWhozJIc68",
+        meta: "Resilient Coders",
+        year: "2025",
       },
     ],
   },
@@ -305,8 +397,9 @@ export const podcasts: ContentItem[] = [
   },
   {
     title: "DevRel Deep Dive: Measuring Impact & Where Your Devs Should Be",
-    href: "https://open.spotify.com/episode/7IPfcXKyjVTi7cJgGYFYiK",
-    meta: "Spotlight",
+    href: "https://www.youtube.com/watch?v=JFpY4dTvCPc",
+    meta: "Stoplight",
+    year: "2022",
   },
   {
     title: "Let's Chat About AI",
@@ -317,6 +410,120 @@ export const podcasts: ContentItem[] = [
     title: "Redesigning the SDLC for the Agentic Era",
     href: "https://www.youtube.com/watch?v=7TYVmr5qLew",
     meta: "Cloudflare · The Clanker Chronicles",
+  },
+  {
+    title: "She Ships, Episode 11",
+    href: "https://www.youtube.com/watch?v=SgZcCkXKAXc",
+    meta: "torc.dev",
+    year: "2026",
+  },
+  {
+    title: "Coffee and Open Source Conversation",
+    href: "https://www.youtube.com/watch?v=qgXY_n42JDk",
+    meta: "Isaac Levin",
+    year: "2026",
+  },
+  {
+    title: "The Tech Commute",
+    href: "https://www.youtube.com/watch?v=xlua-diSUA4",
+    meta: "Jason Torres",
+    year: "2026",
+  },
+  {
+    title: "How Entire's Developer Platform Preserves Context for AI-Assisted Development",
+    href: "https://www.youtube.com/watch?v=DxaV2D7S1Hg",
+    meta: "This Dot Media",
+    year: "2026",
+  },
+  {
+    title: "Open Source, Advocacy, and the Power of Joy in Developer Marketing",
+    href: "https://www.youtube.com/watch?v=8SfxfQSDvwc",
+    meta: "Bits and Bants",
+    year: "2025",
+  },
+  {
+    title: "AI, Open Source, and Developer Safety",
+    href: "https://www.youtube.com/watch?v=ZwFeeZPDRLQ",
+    meta: "Galileo",
+    year: "2025",
+  },
+  {
+    title: "MCP: Hype, Security, and Real-World Use",
+    href: "https://www.youtube.com/watch?v=OLcALmE7p5k",
+    meta: "Two Voice Devs",
+    year: "2025",
+  },
+  {
+    title: "goose, Open Source, and the Future of Coding with AI",
+    href: "https://www.youtube.com/watch?v=nMndVZEBnSM",
+    meta: "Chaos Agents",
+    year: "2025",
+  },
+  {
+    title: "Block Developer Advocate Rizel Scarlett",
+    href: "https://www.youtube.com/watch?v=iDKGF98ooQ0",
+    meta: "Sama",
+    year: "2024",
+  },
+  {
+    title: "Coffee and Open Source Conversation",
+    href: "https://www.youtube.com/watch?v=sIInQkco49I",
+    meta: "Isaac Levin",
+    year: "2024",
+  },
+  {
+    title: "devrelshow, Episode 16",
+    href: "https://www.youtube.com/watch?v=CrjxuX2ulQw",
+    meta: "Frédéric Harper",
+    year: "2024",
+  },
+  {
+    title: "The Future of Identity with Web5 & Verifiable Credentials",
+    href: "https://www.youtube.com/watch?v=f6KVCN94hYs",
+    meta: "Nick Taylor",
+    year: "2024",
+  },
+  {
+    title: "Modern Fintech, DevRel, and Inclusive Communities",
+    href: "https://www.youtube.com/watch?v=KFBlgsCzxbI",
+    meta: "CompressedFM",
+    year: "2024",
+  },
+  {
+    title: "Equity in Open Source, the Impact of Imposter Syndrome, and More",
+    href: "https://www.youtube.com/watch?v=3g45SWUWJ6g",
+    meta: "All Things Open",
+    year: "2024",
+  },
+  {
+    title: "How to Own Your Digital Identity, DevRel and Skepticism, GitHub Copilot",
+    href: "https://www.youtube.com/watch?v=49XrXsQx9Bs",
+    meta: "Tejas Kumar",
+    year: "2024",
+  },
+  {
+    title: "Open Source and Advocacy",
+    href: "https://www.youtube.com/watch?v=caYwW32lfUc",
+    meta: "Certified Fresh Events",
+    year: "2023",
+  },
+  {
+    title: "Advocating for an Inclusive Future",
+    href: "https://www.youtube.com/watch?v=jEpYdtF6g_8",
+    meta: "The Dev Morning Show",
+    year: "2022",
+  },
+  {
+    title: "Empowering and Educating Engineers as a Developer Advocate at GitHub",
+    href: "https://www.youtube.com/watch?v=lXoLMB8U7Ss",
+    meta: "Sisters in Tech",
+    year: "2022",
+  },
+  {
+    title: "Cloud Engineering Summit 2021: Build Panel Discussion",
+    href: "https://www.youtube.com/watch?v=uZgnf1iXi6w",
+    meta: "Pulumi",
+    year: "2021",
   },
 ];
 
@@ -461,8 +668,6 @@ export const thoughtLeadership: ContentItem[] = [
 export type WorkTab = {
   id: string;
   label: string;
-  accent: Accent;
-  blurb: string;
   groups: ContentGroup[];
 };
 
@@ -479,22 +684,19 @@ export const workTabs: WorkTab[] = [
   {
     id: "writing",
     label: "Writing",
-    accent: "terra",
-    blurb: "Articles for developer audiences, from beginner guides on the GitHub Blog to deep dives on MCP and agentic AI.",
     groups: writing,
   },
   {
     id: "speaking",
-    label: "Talks & videos",
-    accent: "marigold",
-    blurb: "Conference talks, a GitHub Universe keynote, a live O'Reilly course, and short educational videos.",
-    groups: withoutGenericMeta(speaking),
+    label: "Talks/videos",
+    // Show the event or publisher where one is known, otherwise the kind of piece.
+    groups: withoutGenericMeta(speaking).flatMap((group) =>
+      group.items.map((item) => ({ label: item.meta ?? group.label, items: [{ ...item, meta: undefined }] })),
+    ),
   },
   {
     id: "open-source",
     label: "Open source",
-    accent: "moss",
-    blurb: "Merged contributions to goose and the Entire CLI, plus internal tooling built at GitHub.",
     groups: [
       {
         label: "block/goose",
@@ -514,22 +716,16 @@ export const workTabs: WorkTab[] = [
   {
     id: "podcasts",
     label: "Podcasts",
-    accent: "plum",
-    blurb: "Guest appearances on Copilot, GitHub Actions, open source, agentic engineering, and measuring DevRel impact.",
     groups: podcasts.map((item) => ({ label: item.meta ?? "Podcast", items: [{ ...item, meta: undefined }] })),
   },
   {
     id: "streams",
     label: "Live streams",
-    accent: "terra",
-    blurb: "Live streams I hosted for Block and GitHub, including every episode of The Great Goose Off vibe coding competition.",
     groups: streams.map((group) => ({ ...group, label: group.label.replace("Hosted at ", "") })),
   },
   {
     id: "devrel",
-    label: "DevRel essays",
-    accent: "marigold",
-    blurb: "Essays on the strategy and human side of Developer Relations.",
-    groups: [{ label: "Essay", items: thoughtLeadership }],
+    label: "Essays",
+    groups: thoughtLeadership.map((item) => ({ label: item.meta ?? "Essay", items: [{ ...item, meta: undefined }] })),
   },
 ];

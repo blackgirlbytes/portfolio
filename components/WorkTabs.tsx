@@ -1,24 +1,18 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { useId, useState } from "react";
 import { Thumbnail } from "@/components/Thumbnail";
-import type { Accent, ContentGroup, ContentItem, WorkTab } from "@/lib/content";
+import { WindowChrome } from "@/components/WindowChrome";
+import type { ContentGroup, ContentItem, WorkTab } from "@/lib/content";
+import { type Flavor, flavorStyle } from "@/lib/flavors";
 
-const INITIAL_COUNT = 6;
-
-const tabActive: Record<Accent, string> = {
-  terra: "border-terra bg-terra text-white",
-  marigold: "border-marigold bg-marigold text-white",
-  moss: "border-moss bg-moss text-white",
-  plum: "border-plum bg-plum text-white",
-};
-
-const chip: Record<Accent, string> = {
-  terra: "bg-terra-soft text-terra-deep",
-  marigold: "bg-marigold-soft text-marigold-deep",
-  moss: "bg-moss-soft text-moss",
-  plum: "bg-plum-soft text-plum",
+const tabFlavor: Record<string, Flavor> = {
+  writing: "strawberry",
+  speaking: "grape",
+  "open-source": "lime",
+  podcasts: "blueberry",
+  streams: "tangerine",
+  devrel: "bondi",
 };
 
 type Entry = ContentItem & { source: string };
@@ -30,16 +24,16 @@ function flatten(groups: ContentGroup[]): Entry[] {
 export function WorkTabs({ tabs }: { tabs: WorkTab[] }) {
   const baseId = useId();
   const [activeId, setActiveId] = useState(tabs[0].id);
-  const [expanded, setExpanded] = useState(false);
 
   const active = tabs.find((tab) => tab.id === activeId) ?? tabs[0];
   const entries = flatten(active.groups);
-  const visible = expanded ? entries : entries.slice(0, INITIAL_COUNT);
-  const hiddenCount = entries.length - visible.length;
 
-  function select(id: string) {
+  function select(id: string, button: HTMLElement) {
     setActiveId(id);
-    setExpanded(false);
+    button.scrollIntoView({ inline: "nearest", block: "nearest" });
+    // Once the list is scrolled, switching jumps back to the top of the new list.
+    const section = document.getElementById("work");
+    if (section && section.getBoundingClientRect().top < 0) section.scrollIntoView();
   }
 
   function onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
@@ -47,103 +41,85 @@ export function WorkTabs({ tabs }: { tabs: WorkTab[] }) {
     event.preventDefault();
     const index = tabs.findIndex((tab) => tab.id === activeId);
     const next = tabs[(index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
-    select(next.id);
-    document.getElementById(`${baseId}-tab-${next.id}`)?.focus();
+    const button = document.getElementById(`${baseId}-tab-${next.id}`);
+    if (!button) return;
+    select(next.id, button);
+    button.focus();
   }
 
   return (
-    <div>
-      <div
-        role="tablist"
-        aria-label="Work categories"
-        onKeyDown={onKeyDown}
-        className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0"
-      >
-        {tabs.map((tab) => {
-          const selected = tab.id === activeId;
-          const count = flatten(tab.groups).length;
-          return (
-            <button
-              key={tab.id}
-              id={`${baseId}-tab-${tab.id}`}
-              type="button"
-              role="tab"
-              aria-selected={selected}
-              aria-controls={`${baseId}-panel`}
-              tabIndex={selected ? 0 : -1}
-              onClick={() => select(tab.id)}
-              className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                selected ? tabActive[tab.accent] : "border-sand bg-paper text-ink-soft hover:border-ink/20 hover:text-ink"
-              }`}
-            >
-              {tab.label}
-              <span
-                className={`rounded-full px-1.5 text-xs tabular-nums ${selected ? "bg-white/20" : "bg-sand/70 text-ink-faint"}`}
+    <section
+      id="work"
+      aria-label="Work"
+      style={flavorStyle(tabFlavor[active.id] ?? "strawberry")}
+      className="window-open mx-3 mt-5 scroll-mt-12 rounded-xl border border-line bg-window shadow-[0_24px_60px_rgba(150,110,190,0.18)] sm:mx-auto sm:mt-7 sm:max-w-[calc(72rem-2rem)]"
+    >
+      <WindowChrome title={active.label} />
+
+      <div className="chrome sticky top-0 z-40 border-b border-line sm:top-10">
+        <div
+          role="tablist"
+          aria-label="Work categories"
+          onKeyDown={onKeyDown}
+          className="flex gap-2 overflow-x-auto px-3 py-2.5 [scrollbar-width:none] md:justify-center"
+        >
+          {tabs.map((tab) => {
+            const selected = tab.id === activeId;
+            return (
+              <button
+                key={tab.id}
+                id={`${baseId}-tab-${tab.id}`}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`${baseId}-panel`}
+                tabIndex={selected ? 0 : -1}
+                onClick={(event) => select(tab.id, event.currentTarget)}
+                style={flavorStyle(tabFlavor[tab.id] ?? "strawberry")}
+                className={`gel flex shrink-0 items-baseline gap-1.5 rounded-full px-4 py-1 text-[13px] font-bold ${
+                  selected ? "gel-flavor" : "text-ink-soft hover:text-ink"
+                }`}
               >
-                {count}
-              </span>
-            </button>
-          );
-        })}
+                {tab.label}
+                <span className="text-[11px] font-normal tabular-nums opacity-75">{flatten(tab.groups).length}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div
         id={`${baseId}-panel`}
         role="tabpanel"
         aria-labelledby={`${baseId}-tab-${active.id}`}
-        className="mt-6"
+        className="pinstripes p-4 sm:p-6"
       >
-        <p className="text-sm text-ink-soft">{active.blurb}</p>
-
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((entry) => (
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {entries.map((entry) => (
             <li key={`${entry.source}-${entry.href}-${entry.title}`}>
               <a
                 href={entry.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col overflow-hidden rounded-xl border border-sand bg-paper transition hover:-translate-y-0.5 hover:border-ink/15 hover:shadow-sm"
+                className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-window shadow-[0_2px_6px_rgba(150,110,190,0.10)] transition-shadow hover:border-[var(--flavor)] hover:shadow-[0_0_0_3px_var(--flavor)]"
               >
-                <Thumbnail
-                  src={entry.image}
-                  label={entry.source}
-                  accent={active.accent}
-                  className="aspect-[1.91/1] border-b border-sand"
-                />
-                <span className="flex flex-1 flex-col p-4">
-                <span className="flex items-center justify-between gap-3">
-                  <span className={`truncate rounded-full px-2 py-0.5 text-xs font-medium ${chip[active.accent]}`}>
-                    {entry.source}
+                <Thumbnail src={entry.image} label={entry.source} className="aspect-[1.91/1] border-b border-line" />
+                <span className="flex flex-1 flex-col gap-2 p-3.5 group-hover:bg-[var(--flavor-soft)]">
+                  <span className="text-[15px] font-bold leading-snug">{entry.title}</span>
+                  <span className="mt-auto flex items-center justify-between gap-3 text-[13px] text-ink-soft">
+                    <span className="truncate">{entry.source}</span>
+                    <span className="shrink-0 tabular-nums">{entry.year}</span>
                   </span>
-                  <span className="flex shrink-0 items-center gap-2 text-xs text-ink-faint">
-                    {entry.year}
-                    <ArrowUpRight className="h-4 w-4 transition group-hover:text-terra" aria-hidden />
-                  </span>
-                </span>
-                <span className="mt-3 font-medium leading-snug text-ink transition group-hover:text-terra-deep">
-                  {entry.title}
-                </span>
-                {entry.meta ? <span className="mt-1 text-sm text-ink-faint">{entry.meta}</span> : null}
-                {entry.description ? (
-                  <span className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-ink-soft">{entry.description}</span>
-                ) : null}
                 </span>
               </a>
             </li>
           ))}
         </ul>
-
-        {entries.length > INITIAL_COUNT ? (
-          <button
-            type="button"
-            onClick={() => setExpanded((value) => !value)}
-            aria-expanded={expanded}
-            className="mt-5 rounded-full border border-sand bg-paper px-4 py-2 text-sm font-semibold text-ink-soft transition hover:border-terra/40 hover:text-terra-deep"
-          >
-            {expanded ? "Show fewer" : `Show all ${entries.length} (${hiddenCount} more)`}
-          </button>
-        ) : null}
       </div>
-    </div>
+
+      <p className="chrome rounded-b-[11px] border-t border-line px-3 py-1 text-center text-[11px] text-ink-soft">
+        {entries.length} items
+      </p>
+    </section>
   );
 }
