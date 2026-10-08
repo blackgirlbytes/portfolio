@@ -25,7 +25,6 @@ export const contact = {
 };
 
 export const navLinks = [
-  { href: "#skills", label: "Skills" },
   { href: "#highlights", label: "Highlights" },
   { href: "#work", label: "Work" },
   { href: "#community", label: "Community" },
@@ -37,58 +36,6 @@ export const heroStats = [
   "O'Reilly course instructor",
   "153+ BlackRel community members",
   "26 talks, podcasts & streams",
-];
-
-export type Skill = {
-  icon: "pen" | "mic" | "code" | "users" | "video" | "sparkles";
-  accent: Accent;
-  title: string;
-  blurb: string;
-};
-
-export const skills: Skill[] = [
-  {
-    icon: "pen",
-    accent: "terra",
-    title: "Technical writing & content",
-    blurb:
-      "15 published articles for developer audiences — from beginner CI/CD guides on the GitHub Blog to deep dives on MCP and agentic coding for Block's goose blog.",
-  },
-  {
-    icon: "mic",
-    accent: "marigold",
-    title: "Speaking & teaching",
-    blurb:
-      "GitHub Universe keynote speaker, O'Reilly live-course instructor, and conference speaker on AI-assisted coding.",
-  },
-  {
-    icon: "code",
-    accent: "moss",
-    title: "Open source engineering",
-    blurb:
-      "Ships fixes and features to goose, Block's open source AI agent — MCP UX, multimodal support, and desktop polish — plus internal tooling built at GitHub.",
-  },
-  {
-    icon: "users",
-    accent: "plum",
-    title: "Community building",
-    blurb:
-      "Founded BlackRel, a community of 153+ Black DevRel professionals, and maintains the goose and Entire Discord communities.",
-  },
-  {
-    icon: "video",
-    accent: "terra",
-    title: "Live streaming & video",
-    blurb:
-      "Hosted 12 live streams at Block and GitHub with guests like Simon Willison and Nate Moore, plus short-form educational videos.",
-  },
-  {
-    icon: "sparkles",
-    accent: "marigold",
-    title: "AI & developer-tool expertise",
-    blurb:
-      "Hands-on depth across the Model Context Protocol (MCP), GitHub Copilot, goose, prompt engineering, and agentic coding workflows.",
-  },
 ];
 
 export type Highlight = {
@@ -147,102 +94,93 @@ export const highlights: Highlight[] = [
   },
 ];
 
-export const writing: ContentGroup[] = [
+const GOOSE_BLOG = "Block · goose blog";
+
+// Display order is intentional, so posts are not grouped by publication.
+const writingInOrder: (ContentItem & { source: string })[] = [
+  { source: "LinkedIn", title: "Welcome to Glass Town", href: "https://lnkd.in/p/g84cj5RW" },
   {
-    label: "Block · goose blog",
-    items: [
-      {
-        title: "5 Tips for Building MCP Apps That Work",
-        href: "https://goose-docs.ai/blog/2026/01/30/5-tips-building-mcp-apps/",
-        year: "2026",
-      },
-      {
-        title: "Gas Town Explained: How to Use Goosetown for Parallel Agentic Engineering",
-        href: "https://goose-docs.ai/blog/2026/02/19/gastown-explained-goosetown/",
-        year: "2026",
-      },
-      {
-        title: "How I Used RPI to Build an OpenClaw Alternative",
-        href: "https://goose-docs.ai/blog/2026/02/06/rpi-openclaw-alternative/",
-        year: "2026",
-      },
-      {
-        title: "How We Use goose to Maintain goose",
-        href: "https://goose-docs.ai/blog/2025/12/28/goose-maintains-goose/",
-        year: "2025",
-      },
-      {
-        title: "8 Things You Didn't Know About Code Mode",
-        href: "https://goose-docs.ai/blog/2026/02/06/8-things-you-didnt-know-about-code-mode/",
-        year: "2026",
-      },
-    ],
+    source: "LinkedIn",
+    title: "Jev Might Save Your Relationship",
+    href: "https://www.linkedin.com/pulse/jev-might-save-your-relationship-rizel-scarlett-cbx2c",
   },
   {
-    label: "GitHub Blog",
-    items: [
-      {
-        title: "8 things you didn't know you could do with GitHub Copilot",
-        href: "https://github.blog/2022-09-14-8-things-you-didnt-know-you-could-do-with-github-copilot/",
-        year: "2022",
-      },
-      {
-        title: "How to use GitHub Copilot: Prompts, tips, and use cases",
-        href: "https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/",
-        year: "2023",
-      },
-      {
-        title: "A beginner's guide to CI/CD with GitHub Actions",
-        href: "https://github.blog/2022-06-03-a-beginners-guide-to-ci-cd-and-automation-on-github/",
-        year: "2022",
-      },
-    ],
+    source: "Entire blog",
+    title: "The Entire CLI: How It Works And Where It's Headed",
+    href: "https://entire.io/blog/the-entire-cli-how-it-works-and-where-its-headed",
   },
   {
-    label: "dev.to",
-    items: [
-      {
-        title: "A beginner's guide to prompt engineering with GitHub Copilot",
-        href: "https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp",
-      },
-      {
-        title: "How to send a tweet with Copilot",
-        href: "https://dev.to/github/how-to-send-a-tweet-with-github-copilot-4ih7",
-      },
-      {
-        title: "How do I resolve merge conflicts?",
-        href: "https://dev.to/github/how-do-i-resolve-merge-conflicts-5438",
-      },
-      {
-        title: "My Predictions for MCP and AI-Assisted Coding",
-        href: "https://dev.to/blackgirlbytes/my-predictions-for-mcp-and-ai-assisted-coding-in-2026-16bm",
-        year: "2026",
-      },
-    ],
+    source: GOOSE_BLOG,
+    title: "5 Tips for Building MCP Apps That Work",
+    href: "https://goose-docs.ai/blog/2026/01/30/5-tips-building-mcp-apps/",
+    year: "2026",
   },
   {
-    label: "Entire blog",
-    items: [
-      {
-        title: "The Entire CLI: How It Works And Where It's Headed",
-        href: "https://entire.io/blog/the-entire-cli-how-it-works-and-where-its-headed",
-      },
-    ],
+    source: GOOSE_BLOG,
+    title: "Gas Town Explained: How to Use Goosetown for Parallel Agentic Engineering",
+    href: "https://goose-docs.ai/blog/2026/02/19/gastown-explained-goosetown/",
+    year: "2026",
   },
   {
-    label: "LinkedIn",
-    items: [
-      {
-        title: "Welcome to Glass Town",
-        href: "https://lnkd.in/p/g84cj5RW",
-      },
-      {
-        title: "Jev Might Save Your Relationship",
-        href: "https://www.linkedin.com/pulse/jev-might-save-your-relationship-rizel-scarlett-cbx2c",
-      },
-    ],
+    source: GOOSE_BLOG,
+    title: "How I Used RPI to Build an OpenClaw Alternative",
+    href: "https://goose-docs.ai/blog/2026/02/06/rpi-openclaw-alternative/",
+    year: "2026",
+  },
+  {
+    source: GOOSE_BLOG,
+    title: "How We Use goose to Maintain goose",
+    href: "https://goose-docs.ai/blog/2025/12/28/goose-maintains-goose/",
+    year: "2025",
+  },
+  {
+    source: GOOSE_BLOG,
+    title: "8 Things You Didn't Know About Code Mode",
+    href: "https://goose-docs.ai/blog/2026/02/06/8-things-you-didnt-know-about-code-mode/",
+    year: "2026",
+  },
+  {
+    source: "dev.to",
+    title: "A beginner's guide to prompt engineering with GitHub Copilot",
+    href: "https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp",
+  },
+  {
+    source: "GitHub Blog",
+    title: "8 things you didn't know you could do with GitHub Copilot",
+    href: "https://github.blog/2022-09-14-8-things-you-didnt-know-you-could-do-with-github-copilot/",
+    year: "2022",
+  },
+  {
+    source: "GitHub Blog",
+    title: "How to use GitHub Copilot: Prompts, tips, and use cases",
+    href: "https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/",
+    year: "2023",
+  },
+  {
+    source: "dev.to",
+    title: "How to send a tweet with Copilot",
+    href: "https://dev.to/github/how-to-send-a-tweet-with-github-copilot-4ih7",
+  },
+  {
+    source: "dev.to",
+    title: "How do I resolve merge conflicts?",
+    href: "https://dev.to/github/how-do-i-resolve-merge-conflicts-5438",
+  },
+  {
+    source: "GitHub Blog",
+    title: "A beginner's guide to CI/CD with GitHub Actions",
+    href: "https://github.blog/2022-06-03-a-beginners-guide-to-ci-cd-and-automation-on-github/",
+    year: "2022",
+  },
+  {
+    source: "dev.to",
+    title: "My Predictions for MCP and AI-Assisted Coding",
+    href: "https://dev.to/blackgirlbytes/my-predictions-for-mcp-and-ai-assisted-coding-in-2026-16bm",
+    year: "2026",
   },
 ];
+
+export const writing: ContentGroup[] = writingInOrder.map(({ source, ...item }) => ({ label: source, items: [item] }));
 
 export const speaking: ContentGroup[] = [
   {
