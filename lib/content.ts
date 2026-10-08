@@ -25,7 +25,6 @@ export const contact = {
 };
 
 export const navLinks = [
-  { href: "#highlights", label: "Highlights" },
   { href: "#work", label: "Work" },
   { href: "#community", label: "Community" },
 ];
@@ -36,62 +35,6 @@ export const heroStats = [
   "O'Reilly course instructor",
   "153+ BlackRel community members",
   "26 talks, podcasts & streams",
-];
-
-export type Highlight = {
-  category: string;
-  accent: Accent;
-  title: string;
-  href: string;
-  image?: string;
-  blurb: string;
-};
-
-export const highlights: Highlight[] = [
-  {
-    category: "Keynote",
-    accent: "terra",
-    title: "GitHub Universe Keynote, 2022",
-    href: "https://youtu.be/rJdlmpJ51ik",
-    blurb: "Spoke on the mainstage at GitHub Universe, GitHub's flagship conference.",
-  },
-  {
-    category: "Course",
-    accent: "marigold",
-    title: "Level Up with GitHub Copilot — O'Reilly",
-    href: "https://www.oreilly.com/live-events/level-up-with-github-copilot/0636920090759/0636920090758/",
-    blurb: "Designed and taught a live O'Reilly course on getting the most out of GitHub Copilot.",
-  },
-  {
-    category: "Product engineering",
-    accent: "moss",
-    title: "The Maintainers App",
-    href: "http://maintainers.github.com",
-    blurb:
-      "Built an internal tool for GitHub's DevRel team that automated the end-to-end workflow for developers applying to join the Maintainers Community, replacing manual review.",
-  },
-  {
-    category: "Community",
-    accent: "plum",
-    title: "BlackRel",
-    href: "https://www.blackrel.dev/",
-    blurb: "Founded a community that has grown to 153+ Black Developer Relations professionals.",
-  },
-  {
-    category: "Open source",
-    accent: "terra",
-    title: "MCP UX in goose",
-    href: "https://github.com/block/goose/pull/6650",
-    blurb:
-      "Debugged a deadlock in goose's MCP elicitation handling, improving reliability for agent–user interactions.",
-  },
-  {
-    category: "Talk",
-    accent: "moss",
-    title: "How to Vibe Code Responsibly, with MCPs",
-    href: "https://www.youtube.com/watch?v=PvdptUZ3XeU",
-    blurb: "Conference talk on safe, practical AI-assisted coding with Model Context Protocol servers.",
-  },
 ];
 
 const GOOSE_BLOG = "Block · goose blog";

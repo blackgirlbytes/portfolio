@@ -1,4 +1,4 @@
-import type { ContentItem, Highlight, WorkTab } from "@/lib/content";
+import type { ContentItem, WorkTab } from "@/lib/content";
 
 const FETCH_TIMEOUT_MS = 8000;
 
@@ -83,8 +83,4 @@ export async function withThumbnails(tabs: WorkTab[]): Promise<WorkTab[]> {
       ),
     })),
   );
-}
-
-export function highlightsWithThumbnails(items: Highlight[]): Promise<Highlight[]> {
-  return Promise.all(items.map((item) => withImage(item)));
 }
