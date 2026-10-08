@@ -33,7 +33,7 @@ export const heroStats = [
   "GitHub Universe keynote speaker",
   "O'Reilly course instructor",
   "153+ BlackRel community members",
-  "26 talks, podcasts & streams",
+  "40 talks, podcasts & streams",
 ];
 
 const GOOSE_BLOG = "Block · goose blog";
@@ -313,6 +313,11 @@ export const podcasts: ContentItem[] = [
     href: "https://www.communitypulse.io/76-lets-chat-about-ai",
     meta: "Community Pulse",
   },
+  {
+    title: "Redesigning the SDLC for the Agentic Era",
+    href: "https://www.youtube.com/watch?v=7TYVmr5qLew",
+    meta: "Cloudflare · The Clanker Chronicles",
+  },
 ];
 
 export const streams: ContentGroup[] = [
@@ -378,7 +383,47 @@ export const streams: ContentGroup[] = [
       },
     ],
   },
+  {
+    label: "The Great Goose Off",
+    // Newest first, following the channel's Great Goose Off playlist.
+    items: (
+      [
+        ["Speed Vibe Coding Challenge", "NmL7uGBC7gc"],
+        ["AI Champions", "zvDUrM_34D0"],
+        ["The Great Goose Off", "dhJjUDaIjGw"],
+        ["The Tinkerers Edition", "zCcvCKsYN7o"],
+        ["Non-Dev Vibe Coding Competition", "H7_u8rdv-hw"],
+        ["Manager vs. Report", "tTf_LftwZ_M"],
+        ["Creator Edition", "SBWYEGB0_xc"],
+        ["Unscripted", "wS5-4hXcnL4"],
+        ["Can Non-Developers Vibe Code?", "ElyxsIctQms"],
+        ["Vibe Coding with MCPs: Non-Dev Edition", "Vyy8G3_RgKw"],
+        ["A Vibe Coding Competition with MCPs, Episode 3", "vyV1nkN0_sc"],
+        ["A Vibe Coding Competition with MCPs, Episode 2", "OsA3qhns7dg"],
+        ["A Vibe Coding Competition with MCPs", "cLPKU53vlTI"],
+      ] as const
+    ).map(([title, id]) => ({ title, href: `https://www.youtube.com/watch?v=${id}` })),
+  },
 ];
+
+export const entireContributions: ContentItem[] = (
+  [
+    [1421, "2026", "Compact external agent transcripts for --full/--verbose display"],
+    [1379, "2026", "Update CLI docs overview link"],
+    [1093, "2026", "Copy login device code to clipboard"],
+    [1191, "2026", "Gracefully skip missing Entire git hooks"],
+    [1189, "2026", "Add first-time contributors guide"],
+    [1038, "2026", "Fix false installer PATH conflict detection"],
+    [1010, "2026", "Add sessions command reference to the docs"],
+    [987, "2026", "Fix rewind/resume continuation wording across agents"],
+    [816, "2026", "Add Codex mentions to documentation"],
+  ] as const
+).map(([number, year, title]) => ({
+  title,
+  href: `https://github.com/entireio/cli/pull/${number}`,
+  meta: `PR #${number}`,
+  year,
+}));
 
 export const thoughtLeadership: ContentItem[] = [
   {
@@ -449,7 +494,7 @@ export const workTabs: WorkTab[] = [
     id: "open-source",
     label: "Open source",
     accent: "moss",
-    blurb: "Contributions to goose, Block's open source AI agent, plus internal tooling built at GitHub.",
+    blurb: "Merged contributions to goose and the Entire CLI, plus internal tooling built at GitHub.",
     groups: [
       {
         label: "block/goose",
@@ -457,6 +502,7 @@ export const workTabs: WorkTab[] = [
           .filter((item) => item.href.includes("block/goose"))
           .map((item) => ({ ...item, meta: item.meta?.replace("block/goose · ", "") })),
       },
+      { label: "entireio/cli", items: entireContributions },
       {
         label: "GitHub DevRel",
         items: openSource
@@ -469,14 +515,14 @@ export const workTabs: WorkTab[] = [
     id: "podcasts",
     label: "Podcasts",
     accent: "plum",
-    blurb: "Guest appearances on Copilot, GitHub Actions, open source, self-advocacy, and measuring DevRel impact.",
+    blurb: "Guest appearances on Copilot, GitHub Actions, open source, agentic engineering, and measuring DevRel impact.",
     groups: podcasts.map((item) => ({ label: item.meta ?? "Podcast", items: [{ ...item, meta: undefined }] })),
   },
   {
     id: "streams",
     label: "Live streams",
     accent: "terra",
-    blurb: "Live streams I hosted for Block and GitHub, often with guests from across the open source ecosystem.",
+    blurb: "Live streams I hosted for Block and GitHub, including every episode of The Great Goose Off vibe coding competition.",
     groups: streams.map((group) => ({ ...group, label: group.label.replace("Hosted at ", "") })),
   },
   {
