@@ -256,6 +256,26 @@ export const writing: ContentGroup[] = allWriting.map(({ source, ...item }) => (
 
 export const speaking: ContentGroup[] = [
   {
+    label: "Videos",
+    items: [
+      {
+        title: "How to Enable Entire in Your Repo",
+        href: "https://www.youtube.com/watch?v=oCtREIM95Rk",
+        meta: "Video",
+      },
+      {
+        title: "How to Create Your First Checkpoint | Entire 101, Ep. 2",
+        href: "https://www.youtube.com/watch?v=ehWDtXYFZ2Y",
+        meta: "Video",
+      },
+      {
+        title: "Bring Your Repos to Entire | Entire 101, Ep. 4",
+        href: "https://www.youtube.com/watch?v=-l0axVoGh_w",
+        meta: "Video",
+      },
+    ],
+  },
+  {
     label: "Conference talks & courses",
     items: [
       {
@@ -387,21 +407,6 @@ export const speaking: ContentGroup[] = [
       {
         title: "Why Your MCP Client Needs a Sandbox",
         href: "https://www.youtube.com/watch?v=pGce9T4E5Yw",
-        meta: "Video",
-      },
-      {
-        title: "How to Enable Entire in Your Repo",
-        href: "https://www.youtube.com/watch?v=oCtREIM95Rk",
-        meta: "Video",
-      },
-      {
-        title: "How to Create Your First Checkpoint | Entire 101, Ep. 2",
-        href: "https://www.youtube.com/watch?v=ehWDtXYFZ2Y",
-        meta: "Video",
-      },
-      {
-        title: "Bring Your Repos to Entire | Entire 101, Ep. 4",
-        href: "https://www.youtube.com/watch?v=-l0axVoGh_w",
         meta: "Video",
       },
       {
