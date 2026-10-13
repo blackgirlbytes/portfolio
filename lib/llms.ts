@@ -58,10 +58,8 @@ function header(): string[] {
     "",
     ...profile.topics.map((topic) => `- ${topic}`),
     "",
-    "## Contact and profiles",
+    "## Profiles",
     "",
-    `- Email: ${contact.email}`,
-    `- Phone: ${contact.phoneDisplay}`,
     ...profile.profiles.map(([label, href]) => `- [${label}](${href})`),
   ];
 }
