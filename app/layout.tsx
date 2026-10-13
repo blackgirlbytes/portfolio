@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito_Sans } from "next/font/google";
+import { SITE_URL } from "@/lib/llms";
 import "./globals.css";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], variable: "--font-nunito-sans", display: "swap" });
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
     description:
       "Writing, speaking, open source, and community around AI-powered developer tools — all on one page.",
     type: "website",
+  },
+  alternates: {
+    types: { "text/markdown": [{ url: `${SITE_URL}llms.txt`, title: "LLM-readable profile and work index" }] },
   },
 };
 
