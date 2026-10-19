@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Thumbnail } from "@/components/Thumbnail";
 import { WindowChrome } from "@/components/WindowChrome";
 import type { ContentGroup, ContentItem, WorkTab } from "@/lib/content";
@@ -15,6 +15,33 @@ const tabFlavor: Record<string, Flavor> = {
   devrel: "bondi",
 };
 
+// URL fragment for each tab, so a category can be linked directly (for example /#open-source).
+const tabAnchor: Record<string, string> = {
+  writing: "writing",
+  speaking: "talks",
+  "open-source": "open-source",
+  podcasts: "podcasts",
+  streams: "streams",
+  devrel: "essays",
+};
+
+const anchorAliases: Record<string, string> = {
+  blog: "writing",
+  blogs: "writing",
+  videos: "speaking",
+  speaking: "speaking",
+  oss: "open-source",
+  "live-streams": "streams",
+  devrel: "devrel",
+};
+
+function tabIdFromHash(hash: string, tabs: WorkTab[]): string | undefined {
+  const anchor = decodeURIComponent(hash.replace(/^#/, "")).toLowerCase();
+  if (!anchor) return undefined;
+  const byAnchor = tabs.find((tab) => (tabAnchor[tab.id] ?? tab.id) === anchor);
+  return byAnchor?.id ?? tabs.find((tab) => tab.id === anchorAliases[anchor])?.id;
+}
+
 type Entry = ContentItem & { source: string };
 
 function flatten(groups: ContentGroup[]): Entry[] {
@@ -28,8 +55,22 @@ export function WorkTabs({ tabs }: { tabs: WorkTab[] }) {
   const active = tabs.find((tab) => tab.id === activeId) ?? tabs[0];
   const entries = flatten(active.groups);
 
+  useEffect(() => {
+    function openFromHash() {
+      const id = tabIdFromHash(window.location.hash, tabs);
+      if (!id) return;
+      setActiveId(id);
+      document.getElementById("work")?.scrollIntoView();
+    }
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, [tabs]);
+
   function select(id: string, button: HTMLElement) {
     setActiveId(id);
+    // replaceState keeps the address bar shareable without adding a history entry per tab click.
+    history.replaceState(null, "", `#${tabAnchor[id] ?? id}`);
     button.scrollIntoView({ inline: "nearest", block: "nearest" });
     // Once the list is scrolled, switching jumps back to the top of the new list.
     const section = document.getElementById("work");
