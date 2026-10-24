@@ -4,7 +4,7 @@ export const SITE_URL = "https://blackgirlbytes.github.io/portfolio/";
 
 const HIGHLIGHTS_PER_SECTION = 5;
 
-const profile = {
+export const profile = {
   name: "Rizel Scarlett",
   tagline:
     "Head of Developer Relations at Entire. Writer, speaker, and open source contributor focused on AI coding agents, MCP, and agentic engineering.",
