@@ -27,6 +27,12 @@ const NEWSLETTER = "The Agent Whisperer";
 
 // Display order is intentional, so posts are not grouped by publication.
 const writingInOrder: (ContentItem & { source: string })[] = [
+  {
+    source: NEWSLETTER,
+    title: "Building a Baby Registry with My Voice",
+    href: "https://www.linkedin.com/pulse/building-baby-registry-my-voice-rizel-scarlett-f9h6c",
+    year: "2026",
+  },
   { source: NEWSLETTER, title: "Welcome to Glass Town", href: "https://lnkd.in/p/g84cj5RW", year: "2026" },
   {
     source: NEWSLETTER,
