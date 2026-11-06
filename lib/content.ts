@@ -545,7 +545,7 @@ export const podcasts: ContentItem[] = [
   },
   {
     title: "AI, Open Source, and Developer Safety",
-    href: "https://www.youtube.com/watch?v=ZwFeeZPDRLQ",
+    href: "https://chainofthought.show/podcast/10-ai-open-source-and-developer-safety-blocks-rizel-scarlett/",
     meta: "Galileo",
     year: "2025",
   },
